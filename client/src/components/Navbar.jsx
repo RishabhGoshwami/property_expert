@@ -9,17 +9,17 @@ export default function Navbar() {
   return (
     <nav className="bg-gray-900 shadow-lg fixed w-full top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between h-20 items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img
-              src={logo}
-              alt="PropShop Logo"
-              className="h-10 w-10 object-cover rounded-full"
-            />
-            <span className="text-xl font-bold text-white">
-              Property Expert <span className="text-yellow-400">Realtors</span>
-            </span>
+          <Link to="/" className="flex items-center space-x-3 relative">
+            <div className="relative">
+              <img
+                src={logo}
+                alt="PropShop Logo"
+                className="h-20 w-auto object-contain -mt-2" 
+              />
+            </div>
+           
           </Link>
 
           {/* Desktop Menu */}
