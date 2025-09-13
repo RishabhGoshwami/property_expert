@@ -64,8 +64,22 @@ export default function ExclusiveProjects() {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      {
+        breakpoint: 1280, // large screens
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 1024, // tablets landscape
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768, // tablets portrait
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 480, // mobile
+        settings: { slidesToShow: 1, slidesToScroll: 1, arrows: false },
+      },
     ],
   };
 
@@ -93,7 +107,7 @@ export default function ExclusiveProjects() {
               : [];
 
             return (
-              <div key={i} className="p-2">
+              <div key={i} className="p-3">
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-6 flex flex-col justify-between h-full border border-gray-200">
                   {project.image && (
                     <img
@@ -104,7 +118,7 @@ export default function ExclusiveProjects() {
                   )}
 
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
                       {project.name}
                     </h3>
 
