@@ -32,27 +32,21 @@ const exclusiveProjects = [
   },
 ];
 
-const SampleNextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} after:!bg-gray-900 after:!h-8 after:!w-8`}
-      style={{ ...style, display: "block", right: "10px", zIndex: 10 }}
-      onClick={onClick}
-    />
-  );
-};
+const SampleNextArrow = ({ className, style, onClick }) => (
+  <div
+    className={`${className} !flex !items-center !justify-center !bg-gray-800 hover:!bg-gray-700 !rounded-full !h-10 !w-10`}
+    style={{ ...style, display: "block", right: "15px", zIndex: 10 }}
+    onClick={onClick}
+  />
+);
 
-const SamplePrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={`${className} after:!bg-gray-900 after:!h-8 after:!w-8`}
-      style={{ ...style, display: "block", left: "10px", zIndex: 10 }}
-      onClick={onClick}
-    />
-  );
-};
+const SamplePrevArrow = ({ className, style, onClick }) => (
+  <div
+    className={`${className} !flex !items-center !justify-center !bg-gray-800 hover:!bg-gray-700 !rounded-full !h-10 !w-10`}
+    style={{ ...style, display: "block", left: "15px", zIndex: 10 }}
+    onClick={onClick}
+  />
+);
 
 export default function ExclusiveProjects() {
   const settings = {
@@ -63,6 +57,14 @@ export default function ExclusiveProjects() {
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
+    appendDots: (dots) => (
+      <div>
+        <ul className="mt-6 flex justify-center space-x-2"> {dots} </ul>
+      </div>
+    ),
+    customPaging: () => (
+      <div className="w-3 h-3 bg-gray-400 rounded-full hover:bg-gray-600 transition-all" />
+    ),
     responsive: [
       {
         breakpoint: 1280,
@@ -120,12 +122,12 @@ export default function ExclusiveProjects() {
 
             return (
               <div key={i} className="px-2">
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-5 h-full border border-gray-200">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-5 h-full border border-gray-100">
                   {project.image && (
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-48 sm:h-56 md:h-60 object-cover rounded-xl mb-4"
+                      className="w-full h-52 sm:h-60 lg:h-64 object-cover rounded-xl mb-4"
                     />
                   )}
 
@@ -134,7 +136,7 @@ export default function ExclusiveProjects() {
                   </h3>
 
                   {bhkArray.length > 0 && (
-                    <p className="text-yellow-500 font-semibold mb-1 text-sm tracking-wide">
+                    <p className="text-yellow-600 font-semibold mb-1 text-sm tracking-wide">
                       {bhkArray.map((b) => b.toUpperCase()).join(" / ")}
                     </p>
                   )}
