@@ -6,7 +6,7 @@ import {
   RiMapPin2Line,
   RiHome3Line,
 } from "react-icons/ri";
-import HeroImage from "../assets/banner.jpg";
+import HeroImage from "../assets/Noida Skyline at Dusk.png";
 
 export default function HeroBanner() {
   const [bhk, setBhk] = useState("");
@@ -27,7 +27,17 @@ export default function HeroBanner() {
 
   return (
     <div className="flex flex-col md:flex-row h-[90vh]">
-      {/* Left Side - Content (30%) */}
+      {/* Left Side - Banner Image (70%) */}
+      <div className="w-full md:w-[70%] relative h-[40vh] md:h-full">
+        <img
+          src={HeroImage}
+          alt="Hero Banner"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+
+      {/* Right Side - Content (30%) */}
       <div className="w-full md:w-[30%] bg-black/80 flex items-center justify-center p-6">
         <div className="text-center md:text-left w-full text-white">
           {/* Quote / Tagline */}
@@ -108,16 +118,6 @@ export default function HeroBanner() {
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Right Side - Banner Image (70%) */}
-      <div className="w-full md:w-[70%] relative h-[40vh] md:h-full">
-        <img
-          src={HeroImage}
-          alt="Hero Banner"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black/30"></div>
       </div>
     </div>
   );
