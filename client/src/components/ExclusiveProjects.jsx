@@ -65,20 +65,32 @@ export default function ExclusiveProjects() {
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1280, // large screens
+        breakpoint: 1280,
         settings: { slidesToShow: 2, slidesToScroll: 1 },
       },
       {
-        breakpoint: 1024, // tablets landscape
+        breakpoint: 1024,
         settings: { slidesToShow: 2, slidesToScroll: 1 },
       },
       {
-        breakpoint: 768, // tablets portrait
-        settings: { slidesToShow: 1, slidesToScroll: 1 },
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "20px",
+          arrows: false,
+        },
       },
       {
-        breakpoint: 480, // mobile
-        settings: { slidesToShow: 1, slidesToScroll: 1, arrows: false },
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "15px",
+          arrows: false,
+        },
       },
     ],
   };
@@ -107,35 +119,33 @@ export default function ExclusiveProjects() {
               : [];
 
             return (
-              <div key={i} className="p-3">
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-6 flex flex-col justify-between h-full border border-gray-200">
+              <div key={i} className="px-2">
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 p-5 h-full border border-gray-200">
                   {project.image && (
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-52 md:h-56 lg:h-60 object-cover rounded-xl mb-4"
+                      className="w-full h-48 sm:h-56 md:h-60 object-cover rounded-xl mb-4"
                     />
                   )}
 
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {project.name}
-                    </h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {project.name}
+                  </h3>
 
-                    {bhkArray.length > 0 && (
-                      <p className="text-yellow-500 font-semibold mb-1 text-sm tracking-wide">
-                        {bhkArray.map((b) => b.toUpperCase()).join(" / ")}
-                      </p>
-                    )}
-
-                    <p className="text-gray-500 capitalize mb-4 text-sm">
-                      {project.type} • {project.location.replace("-", " ")}
+                  {bhkArray.length > 0 && (
+                    <p className="text-yellow-500 font-semibold mb-1 text-sm tracking-wide">
+                      {bhkArray.map((b) => b.toUpperCase()).join(" / ")}
                     </p>
-                  </div>
+                  )}
+
+                  <p className="text-gray-500 capitalize mb-4 text-sm">
+                    {project.type} • {project.location.replace("-", " ")}
+                  </p>
 
                   <Link
                     to={`/project/${project.slug}`}
-                    className="mt-4 inline-block self-start bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-full font-medium transition-all duration-300 text-center text-sm shadow-md"
+                    className="mt-2 inline-block bg-gray-900 hover:bg-gray-800 text-white px-5 py-2 rounded-full font-medium transition-all duration-300 text-sm shadow-md"
                   >
                     View Details
                   </Link>
