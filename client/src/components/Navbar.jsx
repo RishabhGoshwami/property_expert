@@ -92,7 +92,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-white focus:outline-none text-3xl"
+              className="text-blue-900 focus:outline-none text-3xl"
             >
               ☰
             </button>
