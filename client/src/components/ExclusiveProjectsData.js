@@ -20,7 +20,7 @@ const ExclusiveProjectsData = [
     name: "Fusion The Rivulet",
     slug: "fusion-the-rivulet",
     bhk: ["3bhk", "4bhk"],
-    location: "noida",
+    location: "greater-noida-west",
     type: "residential",
     image: "https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png",
   },

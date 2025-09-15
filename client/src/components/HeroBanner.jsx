@@ -1,3 +1,4 @@
+// src/components/HeroBanner.jsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,7 +16,9 @@ export default function HeroBanner() {
 
   const handleSearch = () => {
     if (bhk && location) {
-      navigate(`/projects/${location}?bhk=${bhk}&type=residential`);
+      // Studio => Commercial, otherwise Residential
+      const selectedType = bhk === "studio" ? "commercial" : "residential";
+      navigate(`/projects/${location}?bhk=${bhk}&type=${selectedType}`);
     } else {
       alert("Please select both BHK and Location!");
     }
