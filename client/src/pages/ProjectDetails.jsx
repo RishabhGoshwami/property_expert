@@ -40,13 +40,29 @@ export default function ProjectDetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    // ✅ Fixed payload for Web3Forms
+    const payload = {
+      access_key: project.form.access_key, // required
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: `Request E-Brochure - ${project.name}`,
+      message: `I am interested in ${project.name} located at ${project.location}. Please send me the brochure.`
+    };
+
     try {
       const response = await fetch(project.form.endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload),
       });
+
       const result = await response.json();
+
       if (result.success) {
         setFormData({ name: "", email: "", phone: "" });
         navigate("/thank-you");
@@ -106,7 +122,8 @@ export default function ProjectDetails() {
           ))}
         </div>
       )}
-       {/* Lead Capture Form */}
+
+      {/* Lead Capture Form */}
       {project.form && (
         <div className="mb-6 bg-gray-100 p-6 rounded-lg shadow">
           <h2 className="text-xl font-semibold mb-3">{project.form.submit_label}</h2>
@@ -145,8 +162,6 @@ export default function ProjectDetails() {
           </ul>
         </div>
       )}
-
-     
     </div>
   );
 }

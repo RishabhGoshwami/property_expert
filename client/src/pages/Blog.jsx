@@ -2,28 +2,28 @@ import React from "react";
 
 const blogPosts = [
   {
-    title: "Top 5 Investment Opportunities in Noida 2025",
+    title: "WHY EOI Important for Buyer? | Real Estate Market | Noida",
     date: "September 2025",
-    author: "Rishabh Goshwami",
-    image: "https://via.placeholder.com/600x400?text=Noida+Investment",
-    excerpt: "Discover the most profitable real estate investments in Noida for the year 2025...",
-    link: "/blog/noida-investment-2025",
+    author: "Vikash Gupta",
+    image: "https://img.youtube.com/vi/eHI-w-l4d2A/0.jpg", // YouTube thumbnail
+    excerpt: "Understand why submitting an EOI (Expression of Interest) is crucial for buyers in Noida's real estate market...",
+    link: "https://youtu.be/eHI-w-l4d2A?si=UXqmsnSiLWUGOVbX",
   },
-  {
-    title: "How to Choose the Perfect Residential Property",
-    date: "August 2025",
-    author: "Rishabh Goshwami",
-    image: "https://via.placeholder.com/600x400?text=Residential+Property",
-    excerpt: "Buying a home can be overwhelming. Here’s a guide to choosing the perfect property...",
-    link: "/blog/choose-residential-property",
+ {
+    title: "L&T Reserve Noida | 3, 4 & 5 BHK Ultra-Luxury Flats | Sector 128 Noida",
+    date: "September 2025",
+    author: "Vikash Gupta",
+    image: "https://img.youtube.com/vi/8iD00LxMpfA/0.jpg", // YouTube thumbnail
+    excerpt: "Explore the premium ultra-luxury flats at L&T Reserve in Noida Sector 128...",
+    link: "https://youtu.be/8iD00LxMpfA?si=B448PUjTRhUyuvnR",
   },
-  {
-    title: "Commercial Real Estate Trends in Greater Noida",
-    date: "July 2025",
-    author: "Rishabh Goshwami",
-    image: "https://via.placeholder.com/600x400?text=Commercial+Trends",
-    excerpt: "Explore the latest trends in commercial real estate and what businesses should look for...",
-    link: "/blog/commercial-trends-gn",
+ {
+    title: "Godrej Majesty | Luxury Project | Noida Extension Sector 12",
+    date: "September 2025",
+    author: "vikash gupta",
+    image: "https://img.youtube.com/vi/UsPssctLc9Y/0.jpg", // YouTube thumbnail
+    excerpt: "Take a look at the luxurious Godrej Majesty project in Noida Extension Sector 12 through this project model video...",
+    link: "https://youtu.be/UsPssctLc9Y?si=tAgdZgNmXz3I2rzG",
   },
 ];
 
@@ -66,6 +66,8 @@ export default function Blog() {
               <p className="text-gray-700 flex-grow">{post.excerpt}</p>
               <a
                 href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-4 py-2 rounded-lg font-medium transition"
               >
                 Read More →
