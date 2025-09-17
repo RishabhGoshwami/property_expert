@@ -11,7 +11,7 @@ const teamMembers = [
   image: vikash,
 },
 {
-  name: "Anmoal Mishra",
+  name: "Anmol Mishra",
   title: "General Manager – Sales",
   image: Anmoal,
 },
