@@ -1,6 +1,6 @@
-// src/pages/Projects.jsx
 import { useParams, useLocation, Link } from "react-router-dom";
-import ExclusiveProjectsData from "../components/ExclusiveProjectsData"; // ✅ alag data file
+import ExclusiveProjectsData from "../components/ExclusiveProjectsData";
+import { FaTimesCircle } from "react-icons/fa";
 
 export default function Projects() {
   const { location } = useParams();
@@ -8,7 +8,7 @@ export default function Projects() {
   const selectedBhk = query.get("bhk");
   const type = query.get("type") || "all";
 
-  // ✅ Filter logic
+  // Filter logic
   let projectList = ExclusiveProjectsData;
 
   if (location && location !== "all") {
@@ -29,44 +29,97 @@ export default function Projects() {
     );
   }
 
-  return (
-    <div className="pt-20 max-w-6xl mx-auto px-4">
-      <h1 className="text-3xl font-bold text-blue-600 mb-6 capitalize">
-        {location ? `${location.replace(/-/g, " ")} Projects` : "Projects"}
-      </h1>
+  const hasActiveFilters = location !== "all" || type !== "all" || selectedBhk;
 
-      {projectList.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectList.map((project, i) => (
-            <div
-              key={i}
-              className="p-4 bg-white rounded-lg shadow hover:shadow-lg transition flex flex-col justify-between"
+  return (
+    <div className="pt-24 pb-16 bg-gray-50 dark:bg-gray-900 min-h-screen px-4">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4">
+          {location
+            ? `${location.replace(/-/g, " ")} Real Estate`
+            : "All Projects"}
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">
+          Explore a curated list of our exclusive real estate projects.
+        </p>
+
+        {/* Active Filters Display */}
+        {hasActiveFilters && (
+          <div className="flex flex-wrap items-center gap-2 mb-6 text-sm text-gray-700 dark:text-gray-300">
+            <span className="font-semibold mr-2">Filters Applied:</span>
+            {location && location !== "all" && (
+              <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full capitalize flex items-center gap-1">
+                <span className="font-medium">Location:</span> {location.replace(/-/g, " ")}
+              </span>
+            )}
+            {type !== "all" && (
+              <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full capitalize flex items-center gap-1">
+                <span className="font-medium">Type:</span> {type}
+              </span>
+            )}
+            {selectedBhk && (
+              <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full capitalize flex items-center gap-1">
+                <span className="font-medium">BHK:</span> {selectedBhk}
+              </span>
+            )}
+            <Link
+              to="/projects/all"
+              className="ml-4 flex items-center text-red-500 hover:text-red-700 transition-colors"
             >
-              <div>
+              <FaTimesCircle className="mr-1" />
+              Reset Filters
+            </Link>
+          </div>
+        )}
+
+        {projectList.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projectList.map((project, i) => (
+              <div
+                key={i}
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+              >
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="w-full h-40 object-cover rounded-md mb-3"
+                  className="w-full h-56 object-cover"
                 />
-                <h2 className="text-xl font-bold">{project.name}</h2>
-                <p className="text-sm text-gray-500 capitalize">
-                  {project.type} • {project.location.replace("-", " ")}
-                </p>
+                <div className="p-6">
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{project.name}</h2>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 capitalize mb-4">
+                    {project.type} • {project.location.replace("-", " ")}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 line-clamp-2 mb-4">
+                    {project.shortDescription}
+                  </p>
+                  <Link
+                    to={`/project/${project.slug}`}
+                    className="inline-block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition-colors duration-300"
+                  >
+                    View Details
+                  </Link>
+                </div>
               </div>
-
-              {/* ✅ View Details Button */}
-              <Link
-                to={`/project/${project.slug}`}
-                className="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium text-center"
-              >
-                View Details
-              </Link>
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p className="text-gray-600">No projects available for this filter.</p>
-      )}
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16 px-4">
+            <p className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+              Sorry, no projects found. 😟
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-8">
+              Try adjusting your filters or search for another location.
+            </p>
+            <Link
+              to="/projects/all"
+              className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors duration-300"
+            >
+              Reset Filters
+            </Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
+
