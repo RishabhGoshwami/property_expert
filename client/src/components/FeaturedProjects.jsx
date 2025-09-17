@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 export default function FeaturedProjects() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-800"> {/* Dark background */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
             Featured Projects
           </h2>
-          <p className="mt-3 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-3 text-lg text-gray-300 max-w-2xl mx-auto">
             Our premium projects are coming soon. Stay tuned for exclusive
             residential and commercial properties!
           </p>
@@ -20,16 +20,16 @@ export default function FeaturedProjects() {
           {[1, 2, 3, 4].map((item) => (
             <div
               key={item}
-              className="bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col items-center justify-center p-8 hover:shadow-2xl transition transform hover:-translate-y-2"
+              className="bg-gray-900 rounded-2xl shadow-lg border border-gray-700 flex flex-col items-center justify-center p-8 hover:shadow-2xl transition transform hover:-translate-y-2"
             >
               <div className="text-center">
-                <div className="bg-gray-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-gray-400 font-bold text-xl">🔒</span>
+                <div className="bg-gray-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-gray-300 font-bold text-xl">🔒</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-white mb-2">
                   Coming Soon
                 </h3>
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-400 text-sm">
                   Exciting projects launching soon. Check back later!
                 </p>
               </div>

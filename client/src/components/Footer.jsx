@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -60,6 +62,30 @@ export default function Footer() {
             DLF Corporate Greens, Sector – 74A <br /> Gurugram – 122004
           </p>
         </div>
+      </div>
+
+      {/* Social Media Icons */}
+      <div className="flex justify-center gap-5 mb-5">
+        <a href="https://www.facebook.com/share/1GXvDdtHU6/" target="_blank" rel="noopener noreferrer"
+          className="text-gray-400 hover:text-yellow-400 transition text-xl">
+          <FaFacebookF />
+        </a>
+        <a href="https://www.instagram.com/propertyexpertrealtors?igsh=MWh4c3N0NGMwbGw1NA==" target="_blank" rel="noopener noreferrer"
+          className="text-gray-400 hover:text-yellow-400 transition text-xl">
+          <FaInstagram />
+        </a>
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer"
+          className="text-gray-400 hover:text-yellow-400 transition text-xl">
+          <FaXTwitter />
+        </a>
+        <a href="https://www.linkedin.com/in/vikas-kumar-gupta-8735469a/?" target="_blank" rel="noopener noreferrer"
+          className="text-gray-400 hover:text-yellow-400 transition text-xl">
+          <FaLinkedinIn />
+        </a>
+        <a href="https://youtube.com/@propertyexpertrealtors?si=CinG5e80OwYdNhSM" target="_blank" rel="noopener noreferrer"
+          className="text-gray-400 hover:text-yellow-400 transition text-xl">
+          <FaYoutube />
+        </a>
       </div>
 
       {/* Bottom Bar */}

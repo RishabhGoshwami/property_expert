@@ -3,9 +3,9 @@ import React from "react";
 
 // ✅ Example images
 const galleryImages = [
-  "https://via.placeholder.com/400x300?text=Image+1",
-  "https://via.placeholder.com/400x300?text=Image+2",
-  "https://via.placeholder.com/400x300?text=Image+3",
+  "https://scontent.fdel27-4.fna.fbcdn.net/v/t39.30808-6/548226344_703012266093455_5004783762460224569_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=FgB8H-D1V3QQ7kNvwFIquV0&_nc_oc=AdlHX0AJSjXccxgnY55nK9yuLMydk3R3uRSGpc1MnkLVm5APBJb6OylnJVR-dePJpvZjvrWqVvVRyz4RaXLADuhg&_nc_zt=23&_nc_ht=scontent.fdel27-4.fna&_nc_gid=wwr3lAAyJQTXXMLBG0Wa6g&oh=00_AfaeSpeM-seTtSzU5q-o-tW413HWcTy2Ctfa-DHx38eMRw&oe=68D00BB0",
+  "https://scontent.fdel27-5.fna.fbcdn.net/v/t39.30808-6/546520622_699103356484346_2785278384637485403_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Fws2G86iJ9AQ7kNvwEOA4IB&_nc_oc=AdmhHKnYd6ktm00HzXH8bRYOEXiuXech7sCrfSM9khnTHjCYq-qK6hkFWR2CG74vz4TfaYKN38JPcdW-HNagKA0g&_nc_zt=23&_nc_ht=scontent.fdel27-5.fna&_nc_gid=pm0uT-0sHPe5HOrsaep4uA&oh=00_Afb10JfWHCkUdkfqK7WYAR1RvC5h5_6rFlJ1bGy3Q3h1kA&oe=68D02AC6",
+  "https://scontent.fdel27-6.fna.fbcdn.net/v/t39.30808-6/469121795_17880471192189953_706461706583097804_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=apVhjd2FR78Q7kNvwESwnXi&_nc_oc=Adm0cF3vkG-mm4RgczmbCIV67Nx6RFLnvobpaIZTjGMsWYZXXaeL3FVAWXsu2SJDyxMDcPzhwcHLp4fT-m9S_S-T&_nc_zt=23&_nc_ht=scontent.fdel27-6.fna&_nc_gid=TmFidqjpD8-EVyY5c1s6zA&oh=00_AfYGFBo-bUkdJVM34QTR5H17Zm83Jq6yhPyTx7wQXA6yng&oe=68D03C78",
   "https://via.placeholder.com/400x300?text=Image+4",
   "https://via.placeholder.com/400x300?text=Image+5",
   "https://via.placeholder.com/400x300?text=Image+6",
