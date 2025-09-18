@@ -134,6 +134,42 @@ const projects = [
       submit_label: "📖 Request E-Brochure"
     }
   },
+  {
+    name: "Eternia Residences",
+    slug: "eternia-residences",
+    location: "Greater Noida West",
+    type: "residential",
+    bhk: ["3 BHK", "4 BHK"],
+    images: ["https://www.eternia.co.in/images/elevation-img-2.webp"],
+    about: [
+      "Contemporary residences with modern design and lifestyle amenities.",
+      "Strategically located in Greater Noida West for easy connectivity.",
+      "Crafted for families seeking comfort and premium living.",
+    ],
+    amenities: [
+      "Swimming pool & clubhouse",
+      "Children’s play zone",
+      "Green landscaped areas",
+      "Ample car parking",
+      "24x7 security with intercom",
+    ],
+    details: {
+      price_range: "₹ 70 L – 1.3 Cr",
+      possession: "Dec, 2028",
+      rera_id: "UPRERAPRJ789012",
+    },
+    form: {
+      endpoint: "https://api.web3forms.com/submit",
+      access_key: "d5f504e4-3e5a-4dda-8255-62123d25fe81",
+      fields: [
+        { name: "name", type: "text", placeholder: "Your Name", required: true },
+        { name: "email", type: "email", placeholder: "Your Email", required: true },
+        { name: "phone", type: "tel", placeholder: "Your Phone", required: true },
+      ],
+      submit_label: "📖 Request E-Brochure",
+    },
+  },
+
 
   // ... other projects
 ];
