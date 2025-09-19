@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Navbar from "./components/Navbar";
@@ -17,7 +17,8 @@ import ThankYou from "./components/ThankYou";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
 import Training from "./components/Training";
-import Footer from "./components/Footer";// ✅ add this page
+import Footer from "./components/Footer"; // ✅ add this page
+
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -49,13 +50,13 @@ function App() {
         </Routes>
       </div>
       
-
       {/* ✅ Floating Button */}
       <FloatingButtons onEnquiryClick={() => setIsFormOpen(true)} />
 
       {/* ✅ Popup Form */}
       {isFormOpen && <PopupForm onClose={() => setIsFormOpen(false)} />}
-        <Footer/>
+
+      <Footer/>
     </Router>
   );
 }
