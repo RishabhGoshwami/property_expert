@@ -12,14 +12,14 @@ const teamMembers = [
     image: vikash,
   },
   {
-    name: "Anmol Mishra",
-    title: "General Manager – Sales",
-    image: Anmoal,
-  },
-  {
     name: "Gaurav Sagar",
     title: "Vice President – Sales",
     image: Gaurav,
+  },
+  {
+    name: "Anmol Mishra",
+    title: "General Manager – Sales",
+    image: Anmoal,
   },
   {
     name: "Bhupendra Singh",
