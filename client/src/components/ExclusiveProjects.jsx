@@ -1,8 +1,5 @@
 import React from "react";
-import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const exclusiveProjects = [
   {
@@ -40,126 +37,75 @@ const exclusiveProjects = [
 ];
 
 export default function ExclusiveProjects() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 3, // ✅ Default desktop/laptop
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1024, // tablet < 1024px
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 640, // mobile < 640px
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
-  };
-
   return (
-    <section className="py-16 sm:py-24 bg-gray-50 relative">
+    <section className="py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex justify-between items-center mb-12 sm:mb-16 flex-col sm:flex-row">
-          <div className="text-center sm:text-left flex-1">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
-              Our <span className="text-yellow-600">Exclusive</span> Projects ✨
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto sm:mx-0">
-              Explore our curated selection of top-tier residential and
-              commercial properties, handpicked to offer exceptional value and a
-              premium lifestyle.
-            </p>
-          </div>
-          <div className="mt-6 sm:mt-0 sm:ml-4">
-            <Link
-              to="/projects"
-              className="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
-            >
-              View All
-            </Link>
-          </div>
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
+            Our <span className="text-yellow-600">Exclusive</span> Projects ✨
+          </h2>
+          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
+            Explore our curated selection of top-tier residential and commercial properties, handpicked to offer exceptional value and a premium lifestyle.
+          </p>
         </div>
 
-        {/* Slider */}
-        <Slider {...settings} className="relative">
+        {/* Projects Grid */}
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
           {exclusiveProjects.map((project, i) => {
-            const bhkArray = Array.isArray(project.bhk)
-              ? project.bhk
-              : project.bhk
-              ? [project.bhk]
-              : [];
+            const bhkArray = Array.isArray(project.bhk) ? project.bhk : project.bhk ? [project.bhk] : [];
+
             return (
-              <div key={i} className="px-3">
-                <div className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 group bg-white border border-gray-100">
-                  {project.image && (
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-60 sm:h-72 object-cover rounded-3xl transition-transform duration-500 group-hover:scale-110"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent transition-opacity duration-500"></div>
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
-                    <span className="text-sm font-semibold tracking-wider uppercase bg-yellow-600 text-white py-1 px-3 rounded-full inline-block mb-2 shadow-md">
-                      {project.type}
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-bold leading-snug mb-1">
-                      {project.name}
-                    </h3>
-                    {bhkArray.length > 0 && (
-                      <p className="text-sm sm:text-base font-light mb-2">
-                        {bhkArray.map((b) => b.toUpperCase()).join(" / ")}
-                      </p>
-                    )}
-                    <p className="text-gray-300 capitalize text-sm sm:text-base mb-4 flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 mr-1 text-yellow-500"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {project.location.replace("-", " ")}
+              <div
+                key={i}
+                className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 group"
+              >
+                {/* Project Image */}
+                {project.image && (
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-60 sm:h-72 object-cover transition-transform duration-500 group-hover:scale-110 rounded-3xl"
+                  />
+                )}
+
+                {/* Project Details Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent transition-opacity duration-500"></div>
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
+                  <span className="text-sm font-semibold tracking-wider uppercase bg-yellow-600 text-white py-1 px-3 rounded-full inline-block mb-2 shadow-md">
+                    {project.type}
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-bold leading-snug mb-1">
+                    {project.name}
+                  </h3>
+
+                  {bhkArray.length > 0 && (
+                    <p className="text-sm sm:text-base font-light mb-2">
+                      {bhkArray.map((b) => b.toUpperCase()).join(" / ")}
                     </p>
-                    <Link
-                      to={`/project/${project.slug}`}
-                      className="mt-4 inline-flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 text-gray-900 px-6 py-3 rounded-full font-bold transition-all duration-300 text-sm shadow-lg transform hover:-translate-y-1 hover:shadow-xl"
-                    >
-                      View Details
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 ml-2"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </Link>
-                  </div>
+                  )}
+
+                  <p className="text-gray-300 capitalize text-sm sm:text-base mb-4 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                    </svg>
+                    {project.location.replace("-", " ")}
+                  </p>
+
+                  <Link
+                    to={`/project/${project.slug}`}
+                    className="mt-4 inline-flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 text-gray-900 px-6 py-3 rounded-full font-bold transition-all duration-300 text-sm shadow-lg transform hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    View Details
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             );
           })}
-        </Slider>
+        </div>
       </div>
     </section>
   );

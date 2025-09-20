@@ -2,13 +2,22 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import projects from "../data/exclusiveProjectsData";
 import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Heroicon components for icons
 const LocationMarkerIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
-    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5 text-yellow-600"
+    viewBox="0 0 20 20"
+    fill="currentColor"
+  >
+    <path
+      fillRule="evenodd"
+      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+      clipRule="evenodd"
+    />
   </svg>
 );
 
@@ -17,8 +26,12 @@ export default function ProjectDetails() {
   const project = projects.find((p) => p.slug === slug);
   const navigate = useNavigate();
 
-  // Form state now includes budget
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", budget: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    budget: "",
+  });
   const [loading, setLoading] = useState(false);
 
   if (!project) {
@@ -29,7 +42,6 @@ export default function ProjectDetails() {
     );
   }
 
-  // Slider settings
   const settings = {
     dots: true,
     infinite: true,
@@ -42,7 +54,6 @@ export default function ProjectDetails() {
     fade: true,
   };
 
-  // Form handlers
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -55,7 +66,7 @@ export default function ProjectDetails() {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
-      budget: formData.budget, // Budget included
+      budget: formData.budget,
       subject: `Request E-Brochure - ${project.name}`,
       message: `I am interested in ${project.name} located at ${project.location}. My budget is ${formData.budget}. Please send me the brochure.`,
     };
@@ -63,10 +74,7 @@ export default function ProjectDetails() {
     try {
       const response = await fetch(project.form.endpoint, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(payload),
       });
 
@@ -86,30 +94,129 @@ export default function ProjectDetails() {
     }
   };
 
-  // Find similar projects of same type
- 
-
   return (
     <div className="pt-24 sm:pt-32 bg-gray-50 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Project Header */}
+        {/* Header */}
         <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight">
             {project.name}
           </h1>
-          <p className="mt-2 text-lg text-gray-600 font-medium">{project.location}</p>
+          <p className="mt-2 text-lg text-gray-600 font-medium">
+            {project.location}
+          </p>
         </div>
 
-        {/* Two Column Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Left: Sticky Form */}
+        {/* Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left: Images + Details */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Slider */}
+            {project.images?.length > 0 && (
+              <Slider {...settings} className="rounded-3xl overflow-hidden shadow-2xl">
+                {project.images.map((img, i) => (
+                  <div key={i}>
+                    <img
+                      src={img}
+                      alt={`${project.name} ${i + 1}`}
+                      className="w-full h-[220px] sm:h-[350px] lg:h-[500px] object-cover rounded-3xl"
+                    />
+                  </div>
+                ))}
+              </Slider>
+            )}
+
+            {/* Highlights */}
+            <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">
+                Project Highlights
+              </h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex justify-between">
+                  <span>Near Possession:</span>
+                  <span>{project.details?.near_possession || "N/A"}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Possession Date:</span>
+                  <span>{project.details?.possession}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>RERA ID:</span>
+                  <span>{project.details?.rera_id}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Floor Plans:</span>
+                  <span>{project.bhk ? project.bhk.join(", ") + " BHK" : "N/A"}</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* About */}
+            {project.about && (
+              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  About the Project
+                </h2>
+                {project.about.map((para, i) => (
+                  <p
+                    key={i}
+                    className="text-gray-700 leading-relaxed mb-3 last:mb-0"
+                  >
+                    {para}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            {/* Amenities */}
+            {project.amenities && (
+              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                  Luxury Amenities
+                </h2>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-gray-700">
+                  {project.amenities.map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="text-yellow-600 mt-1 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Location */}
+            <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center">
+                <LocationMarkerIcon />
+                <span className="ml-2">Location</span>
+              </h3>
+              <p className="text-gray-700 mb-3">{project.location}</p>
+              <div className="w-full h-[200px] sm:h-[300px] lg:h-[400px] rounded-2xl overflow-hidden shadow-md">
+                <iframe
+                  title="Project Location"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(
+                    project.location
+                  )}&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Sticky Form */}
           {project.form && (
-            <div className="md:col-span-1">
-              <div className="sticky top-28 bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-yellow-500 h-[calc(100vh-7rem)] flex flex-col justify-start">
+            <div className="lg:col-span-1 order-first lg:order-last">
+              <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-yellow-500 max-h-[90vh] overflow-y-auto sticky top-28">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center">
                   {project.form.submit_label}
                 </h3>
-                <form onSubmit={handleSubmit} className="space-y-4 flex-grow">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {project.form.fields.map((field, i) => (
                     <input
                       key={i}
@@ -123,7 +230,7 @@ export default function ProjectDetails() {
                     />
                   ))}
 
-                  {/* Budget field */}
+                  {/* Budget */}
                   <input
                     type="text"
                     name="budget"
@@ -145,94 +252,6 @@ export default function ProjectDetails() {
               </div>
             </div>
           )}
-
-          {/* Right: Images + Details */}
-          <div className="md:col-span-2 space-y-6">
-            {/* Image Slider */}
-            {project.images && project.images.length > 0 && (
-              <Slider {...settings} className="rounded-3xl overflow-hidden shadow-2xl">
-                {project.images.map((img, i) => (
-                  <div key={i}>
-                    <img
-                      src={img}
-                      alt={`${project.name} ${i + 1}`}
-                      className="w-full h-[500px] object-cover rounded-3xl"
-                    />
-                  </div>
-                ))}
-              </Slider>
-            )}
-
-            {/* Project Highlights / Details */}
-            <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Project Highlights</h3>
-              <ul className="space-y-2 text-gray-700">
-                <li className="flex justify-between">
-                  <span>Near Possession:</span>
-                  <span>{project.details?.near_possession || "N/A"}</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Possession Date:</span>
-                  <span>{project.details?.possession}</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>RERA ID:</span>
-                  <span>{project.details?.rera_id}</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>Floor Plans:</span>
-                  <span>{project.bhk ? project.bhk.join(", ") + " BHK" : "N/A"}</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* About / Amenities */}
-            {project.about && (
-              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Project</h2>
-                {project.about.map((para, i) => (
-                  <p key={i} className="text-gray-700 leading-relaxed mb-3 last:mb-0">{para}</p>
-                ))}
-              </div>
-            )}
-            {project.amenities && (
-              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Luxury Amenities</h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 list-disc list-inside text-gray-700">
-                  {project.amenities.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-yellow-600 mt-1 mr-2">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Bottom Location with Embedded Map */}
-            <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100 mt-4">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center">
-                <LocationMarkerIcon />
-                <span className="ml-2">Location</span>
-              </h3>
-              <p className="text-gray-700 mb-3">{project.location}</p>
-              <div className="w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-md">
-                <iframe
-                  title="Project Location"
-                  src={`https://www.google.com/maps?q=${encodeURIComponent(project.location)}&output=embed`}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-            </div>
-
-           
-
-          </div>
         </div>
       </div>
     </div>
