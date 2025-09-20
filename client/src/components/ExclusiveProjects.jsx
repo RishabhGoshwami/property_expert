@@ -44,14 +44,24 @@ export default function ExclusiveProjects() {
     dots: true,
     infinite: true,
     speed: 600,
-    slidesToShow: 3,
+    slidesToShow: 3, // ✅ Default desktop/laptop
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     arrows: true,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 640, settings: { slidesToShow: 1 } },
+      {
+        breakpoint: 1024, // tablet < 1024px
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 640, // mobile < 640px
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   };
 
@@ -59,16 +69,18 @@ export default function ExclusiveProjects() {
     <section className="py-16 sm:py-24 bg-gray-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex justify-between items-center mb-12 sm:mb-16">
+        <div className="flex justify-between items-center mb-12 sm:mb-16 flex-col sm:flex-row">
           <div className="text-center sm:text-left flex-1">
             <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
               Our <span className="text-yellow-600">Exclusive</span> Projects ✨
             </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-3xl">
-              Explore our curated selection of top-tier residential and commercial properties, handpicked to offer exceptional value and a premium lifestyle.
+            <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto sm:mx-0">
+              Explore our curated selection of top-tier residential and
+              commercial properties, handpicked to offer exceptional value and a
+              premium lifestyle.
             </p>
           </div>
-          <div className="ml-4">
+          <div className="mt-6 sm:mt-0 sm:ml-4">
             <Link
               to="/projects"
               className="inline-block bg-gray-900 hover:bg-gray-800 text-white font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg"
@@ -81,7 +93,11 @@ export default function ExclusiveProjects() {
         {/* Slider */}
         <Slider {...settings} className="relative">
           {exclusiveProjects.map((project, i) => {
-            const bhkArray = Array.isArray(project.bhk) ? project.bhk : project.bhk ? [project.bhk] : [];
+            const bhkArray = Array.isArray(project.bhk)
+              ? project.bhk
+              : project.bhk
+              ? [project.bhk]
+              : [];
             return (
               <div key={i} className="px-3">
                 <div className="relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 group bg-white border border-gray-100">
@@ -106,8 +122,17 @@ export default function ExclusiveProjects() {
                       </p>
                     )}
                     <p className="text-gray-300 capitalize text-sm sm:text-base mb-4 flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 mr-1 text-yellow-500"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                       {project.location.replace("-", " ")}
                     </p>
@@ -116,8 +141,17 @@ export default function ExclusiveProjects() {
                       className="mt-4 inline-flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 text-gray-900 px-6 py-3 rounded-full font-bold transition-all duration-300 text-sm shadow-lg transform hover:-translate-y-1 hover:shadow-xl"
                     >
                       View Details
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 ml-2"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
                       </svg>
                     </Link>
                   </div>
