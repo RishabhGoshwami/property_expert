@@ -3,6 +3,7 @@ const projects = [
     name: "Nirala Gateway",
     slug: "nirala-gateway",
     location: "C-07, Sector 12, Greater Noida West",
+    map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.786842643626!2d77.4747558!3d28.5647563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef83fed3ee85%3A0xdd9959a0e2167730!2sNirala%20Gateway!5e0!3m2!1sen!2sin!4v1692877397000!5m2!1sen!2sin",
     type: "commercial",
     bhk: ["Studio Apartment"],
     images: [
@@ -50,6 +51,7 @@ const projects = [
     name: "Godrej Majesty",
     slug: "godrej-majesty",
     location: "Greater Noida West",
+    map_link: "https://www.google.com/maps/search/?api=1&query=Greater+Noida+West",
     type: "residential",
     bhk: ["3 BHK", "4 BHK"],
     images: [
@@ -92,6 +94,7 @@ const projects = [
     name: "Fusion The Rivulet",
     slug: "fusion-the-rivulet",
     location: "Greater Noida West",
+    map_link: "https://www.google.com/maps/search/?api=1&query=Greater+Noida+West",
     type: "residential",
     bhk: ["3 BHK", "4 BHK"],
     images: [
@@ -134,10 +137,12 @@ const projects = [
       submit_label: "📖 Request E-Brochure"
     }
   },
+
   {
     name: "Eternia Residences",
     slug: "eternia-residences",
     location: "Greater Noida West",
+    map_link: "https://www.google.com/maps/search/?api=1&query=Greater+Noida+West",
     type: "residential",
     bhk: ["3 BHK", "4 BHK"],
     images: ["https://www.eternia.co.in/images/elevation-img-2.webp"],
@@ -170,8 +175,7 @@ const projects = [
     },
   },
 
-
-  // ... other projects
+  // Add more projects here with map_link...
 ];
 
 export default projects;

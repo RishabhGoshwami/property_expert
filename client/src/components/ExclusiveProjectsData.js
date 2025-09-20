@@ -24,6 +24,14 @@ const ExclusiveProjectsData = [
     type: "residential",
     image: "https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png",
   },
+  {
+    name: "Eternia Residences",
+    slug: "eternia-residences",
+    bhk: ["3bhk", "4bhk"],
+    location: "greater-noida-west",
+    type: "residential",
+    image: "https://www.eternia.co.in/images/elevation-img-2.webp",
+  },
 ];
 
 export default ExclusiveProjectsData;

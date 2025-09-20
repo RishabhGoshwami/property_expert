@@ -10,21 +10,25 @@ const teamMembers = [
     name: "Vikash Gupta",
     title: "Director",
     image: vikash,
+    quote: "Leadership is not about titles, it's about impact.", // ✅ quote added
   },
   {
     name: "Gaurav Sagar",
     title: "Vice President – Sales",
     image: Gaurav,
+    quote: "Success in sales comes from understanding people.",
   },
   {
     name: "Anmol Mishra",
     title: "General Manager – Sales",
     image: Anmoal,
+    quote: "Teamwork makes the dream work.",
   },
   {
     name: "Bhupendra Singh",
     title: "Senior Sales Manager",
     image: Bhupendra,
+    quote: "Motivation drives performance.",
   },
 ];
 
@@ -49,7 +53,7 @@ export default function TeamSection() {
               role="article"
             >
               {/* Profile Image with Ring Effect */}
-              <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-transparent ring-4 ring-blue-500 ring-offset-2 ring-offset-white transition-all duration-300">
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-4 border-transparent ring-4 ring-blue-500 ring-offset-2 ring-offset-white transition-all duration-300">
                 <img
                   src={member.image}
                   alt={`Profile picture of ${member.name}`}
@@ -60,9 +64,15 @@ export default function TeamSection() {
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-1">
                 {member.name}
               </h3>
-              <p className="text-blue-600 dark:text-blue-400 font-medium text-lg text-center">
+              <p className="text-blue-600 dark:text-blue-400 font-medium text-lg text-center mb-2">
                 {member.title}
               </p>
+              {/* Member Quote */}
+              {member.quote && (
+                <p className="text-gray-600 dark:text-gray-300 text-center italic text-sm">
+                  "{member.quote}"
+                </p>
+              )}
             </div>
           ))}
         </div>

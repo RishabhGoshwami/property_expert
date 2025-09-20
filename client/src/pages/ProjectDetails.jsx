@@ -12,30 +12,13 @@ const LocationMarkerIcon = () => (
   </svg>
 );
 
-const PriceTagIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
-    <path fillRule="evenodd" d="M10 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zM5.055 4.908l-.708.708a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414zM16.945 4.908l.708.708a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414zM3 10a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zM18 11a1 1 0 011-1h1a1 1 0 010 2h-1a1 1 0 01-1-1zM6.343 14.121l.707.708a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 011.414-1.414zM15.055 14.121l-.708.708a1 1 0 001.414 1.414l.707-.707a1 1 0 00-1.414-1.414zM10 17a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1z" clipRule="evenodd" />
-  </svg>
-);
-
-const CalendarIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
-    <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5H4v9h12V7h-2v1a1 1 0 10-2 0V7H8v1a1 1 0 10-2 0V7z" clipRule="evenodd" />
-  </svg>
-);
-
-const ReraIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
-    <path d="M9 2a1 1 0 00-1 1v2.586a1 1 0 00.293.707l3.914 3.914a1 1 0 001.414 0L17 8.414V17a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1h6.586a1 1 0 01.707.293L13 7.586V3a1 1 0 00-1-1H9zM8 12.586L1.707 6.293a1 1 0 010-1.414L3.293 3.414a1 1 0 011.414 0L10 8.586V12h2v-3.586l-2.293-2.293a1 1 0 00-1.414 0L8 8.586V12.586z" />
-  </svg>
-);
-
 export default function ProjectDetails() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+  // Form state now includes budget
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", budget: "" });
   const [loading, setLoading] = useState(false);
 
   if (!project) {
@@ -72,8 +55,9 @@ export default function ProjectDetails() {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
+      budget: formData.budget, // Budget included
       subject: `Request E-Brochure - ${project.name}`,
-      message: `I am interested in ${project.name} located at ${project.location}. Please send me the brochure.`
+      message: `I am interested in ${project.name} located at ${project.location}. My budget is ${formData.budget}. Please send me the brochure.`,
     };
 
     try {
@@ -89,7 +73,7 @@ export default function ProjectDetails() {
       const result = await response.json();
 
       if (result.success) {
-        setFormData({ name: "", email: "", phone: "" });
+        setFormData({ name: "", email: "", phone: "", budget: "" });
         navigate("/thank-you");
       } else {
         alert("Error: " + (result.message || "Something went wrong"));
@@ -102,9 +86,12 @@ export default function ProjectDetails() {
     }
   };
 
+  // Find similar projects of same type
+ 
+
   return (
     <div className="pt-24 sm:pt-32 bg-gray-50 pb-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Project Header */}
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">
@@ -113,90 +100,16 @@ export default function ProjectDetails() {
           <p className="mt-2 text-lg text-gray-600 font-medium">{project.location}</p>
         </div>
 
-        {/* Image Slider */}
-        {project.images && project.images.length > 0 && (
-          <div className="mb-8">
-            <Slider {...settings} className="rounded-3xl overflow-hidden shadow-2xl">
-              {project.images.map((img, i) => (
-                <div key={i}>
-                  <img
-                    src={img}
-                    alt={`${project.name} ${i + 1}`}
-                    className="w-full h-[300px] sm:h-[450px] md:h-[550px] object-cover"
-                  />
-                </div>
-              ))}
-            </Slider>
-          </div>
-        )}
-
-        {/* Main Content Grid */}
+        {/* Two Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Left Section (About, Details, Amenities) */}
-          <div className="md:col-span-2 space-y-8">
-            {/* About Section */}
-            {project.about && (
-              <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Project</h2>
-                {project.about.map((para, i) => (
-                  <p key={i} className="text-gray-700 leading-relaxed mb-3 last:mb-0">{para}</p>
-                ))}
-              </div>
-            )}
-            
-            {/* Project Details */}
-            <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Quick Details</h2>
-              <ul className="space-y-3">
-                <li className="flex items-center text-gray-700">
-                  <LocationMarkerIcon />
-                  <span className="ml-3 font-semibold">Location:</span> {project.location}
-                </li>
-                {project.bhk && (
-                  <li className="flex items-center text-gray-700">
-                    <span className="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full">
-                      {project.type}
-                    </span>
-                    <span className="font-semibold">BHK Options:</span> {project.bhk.join(" / ")}
-                  </li>
-                )}
-                <li className="flex items-center text-gray-700">
-                  <PriceTagIcon />
-                  <span className="ml-3 font-semibold">Price Range:</span> {project.details?.price_range}
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <CalendarIcon />
-                  <span className="ml-3 font-semibold">Possession:</span> {project.details?.possession}
-                </li>
-                <li className="flex items-center text-gray-700">
-                  <ReraIcon />
-                  <span className="ml-3 font-semibold">RERA ID:</span> {project.details?.rera_id}
-                </li>
-              </ul>
-            </div>
-
-            {/* Amenities Section */}
-            {project.amenities && (
-              <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">Luxury Amenities</h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 list-disc list-inside text-gray-700">
-                  {project.amenities.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                      <span className="text-yellow-600 mt-1 mr-2">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-
-          {/* Right Section (Lead Capture Form) */}
-          <div className="md:col-span-1">
-            {project.form && (
-              <div className="sticky top-28 bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-yellow-500">
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center">{project.form.submit_label}</h2>
-                <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Left: Sticky Form */}
+          {project.form && (
+            <div className="md:col-span-1">
+              <div className="sticky top-28 bg-white p-6 sm:p-8 rounded-3xl shadow-lg border-2 border-yellow-500 h-[calc(100vh-7rem)] flex flex-col justify-start">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 text-center">
+                  {project.form.submit_label}
+                </h3>
+                <form onSubmit={handleSubmit} className="space-y-4 flex-grow">
                   {project.form.fields.map((field, i) => (
                     <input
                       key={i}
@@ -209,6 +122,18 @@ export default function ProjectDetails() {
                       className="w-full p-3 sm:p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
                     />
                   ))}
+
+                  {/* Budget field */}
+                  <input
+                    type="text"
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    placeholder="Your Budget (₹)"
+                    required
+                    className="w-full p-3 sm:p-4 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
+                  />
+
                   <button
                     type="submit"
                     disabled={loading}
@@ -218,7 +143,95 @@ export default function ProjectDetails() {
                   </button>
                 </form>
               </div>
+            </div>
+          )}
+
+          {/* Right: Images + Details */}
+          <div className="md:col-span-2 space-y-6">
+            {/* Image Slider */}
+            {project.images && project.images.length > 0 && (
+              <Slider {...settings} className="rounded-3xl overflow-hidden shadow-2xl">
+                {project.images.map((img, i) => (
+                  <div key={i}>
+                    <img
+                      src={img}
+                      alt={`${project.name} ${i + 1}`}
+                      className="w-full h-[500px] object-cover rounded-3xl"
+                    />
+                  </div>
+                ))}
+              </Slider>
             )}
+
+            {/* Project Highlights / Details */}
+            <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Project Highlights</h3>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex justify-between">
+                  <span>Near Possession:</span>
+                  <span>{project.details?.near_possession || "N/A"}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Possession Date:</span>
+                  <span>{project.details?.possession}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>RERA ID:</span>
+                  <span>{project.details?.rera_id}</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Floor Plans:</span>
+                  <span>{project.bhk ? project.bhk.join(", ") + " BHK" : "N/A"}</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* About / Amenities */}
+            {project.about && (
+              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">About the Project</h2>
+                {project.about.map((para, i) => (
+                  <p key={i} className="text-gray-700 leading-relaxed mb-3 last:mb-0">{para}</p>
+                ))}
+              </div>
+            )}
+            {project.amenities && (
+              <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">Luxury Amenities</h2>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 list-disc list-inside text-gray-700">
+                  {project.amenities.map((item, i) => (
+                    <li key={i} className="flex items-start">
+                      <span className="text-yellow-600 mt-1 mr-2">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Bottom Location with Embedded Map */}
+            <div className="bg-white p-6 rounded-3xl shadow-lg border border-gray-100 mt-4">
+              <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center">
+                <LocationMarkerIcon />
+                <span className="ml-2">Location</span>
+              </h3>
+              <p className="text-gray-700 mb-3">{project.location}</p>
+              <div className="w-full h-[300px] sm:h-[400px] rounded-2xl overflow-hidden shadow-md">
+                <iframe
+                  title="Project Location"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(project.location)}&output=embed`}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+
+           
+
           </div>
         </div>
       </div>

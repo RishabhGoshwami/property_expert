@@ -17,7 +17,7 @@ import ThankYou from "./components/ThankYou";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
 import Training from "./components/Training";
-import Footer from "./components/Footer"; // ✅ add this page
+import Footer from "./components/Footer";
 
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -30,7 +30,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:location" element={<Projects />} />
           <Route path="/projects/all" element={<Projects />} />
