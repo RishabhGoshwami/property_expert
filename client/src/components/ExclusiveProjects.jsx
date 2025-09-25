@@ -39,6 +39,16 @@ const exclusiveProjects = [
     image: "https://www.eternia.co.in/images/elevation-img-2.webp",
     starting_price: "₹3.2 Cr",
   },
+  {
+    name: "L&T Green Reserve",
+    slug: "lt-green-reserve",
+    bhk: ["3bhk", "4bhk", "5bhk"],
+    location: "noida-sector-128",
+    type: "residential",
+    image:
+      "https://images.openai.com/thumbnails/url/AhxQ1Xicu1mUUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5y8jDxz3YuMw0PdcvNLzAMd9E1DS7T9cvzSjK1yHLyC3MuTqoyrSwrD0s3CaxKCsgySzbJLi9w8TZQKwYAqhEosQ",
+    starting_price: "₹6.5 Cr",
+  },
 ];
 
 export default function ExclusiveProjects() {
@@ -85,7 +95,6 @@ export default function ExclusiveProjects() {
 
                 {/* Project Details */}
                 <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 text-white">
-                  {/* ✅ Responsive Badge */}
                   <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase bg-yellow-600 text-white py-0.5 sm:py-1 px-2 sm:px-3 rounded-full inline-block mb-2 shadow-md whitespace-nowrap">
                     {project.type}
                   </span>

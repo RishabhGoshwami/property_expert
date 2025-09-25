@@ -238,6 +238,79 @@ const projects = [
       submit_label: "📖 Request E-Brochure",
     },
   },
+  {
+    name: "L&T Green Reserve",
+    slug: "lt-green-reserve",
+    location: "Sector 128, Noida",
+map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.786842643626!2d77.4747558!3d28.5647563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce70043c259bf%3A0xdbefc6f96bb90b80!2sL%26T+Green+Reserve!5e0!3m2!1sen!2sin!4v1692877397000!5m2!1sen!2sin",
+    type: "residential",
+    bhk: ["3 BHK", "4 BHK", "5 BHK"],
+    image:
+      "https://example.com/lt-green-reserve-main.jpg",
+    logo: "https://greensreserve.com/lnt-noida/images/logo2.png",
+    images: [
+      "https://www.lntrealty.com/wp-content/uploads/2025/09/Building-Facade-scaled.webp",
+      "https://www.lntrealty.com/wp-content/uploads/2025/09/Entrance_Gate-LT-update-2-1.webp",
+      "https://www.lntrealty.com/wp-content/uploads/2025/09/Podiumcam_updated_LT_19-09-2023.webp",
+    ],
+    floor_plan: "https://www.lntrealty.com/wp-content/uploads/2025/09/interior2.webp",
+    about: [
+      "Luxury apartments with modern amenities and eco-friendly design.",
+      "Prime location in Sector 128, Noida with excellent connectivity.",
+      "Spacious layouts with landscaped gardens and community spaces.",
+      "World-class clubhouse and recreational facilities for residents.",
+    ],
+    benefits: [
+      "Premium residential community with high investment potential",
+      "Modern 3, 4, and 5 BHK apartments with luxury specifications",
+      "Ample green open spaces and landscaped gardens",
+      "Advanced security and smart home features",
+      "Proximity to schools, hospitals, and shopping hubs",
+       "State-of-the-art clubhouse and recreational facilities",
+  "Dedicated spaces for kids, senior citizens, and fitness enthusiasts",
+  "24x7 power backup and water supply",
+  "Excellent connectivity via Noida-Greater Noida Expressway",
+  "Eco-friendly design with sustainable construction practices",
+    ],
+    amenities: [
+      {
+        name: "3 BHK Apartment",
+        carpet_area: "1300 - 1600 sq.ft.",
+        price_range: "₹ 3.5 - 4.5 Cr + Charges",
+      },
+      {
+        name: "4 BHK Apartment",
+        carpet_area: "1800 - 2200 sq.ft.",
+        price_range: "₹ 5 - 6 Cr + Charges",
+      },
+      {
+        name: "5 BHK Apartment",
+        carpet_area: "2500 - 3000 sq.ft.",
+        price_range: "₹ 7 - 8 Cr + Charges",
+      },
+      "Swimming pool and gymnasium",
+      "Clubhouse with indoor games",
+      "Children's play area",
+      "Landscaped gardens and jogging tracks",
+      "24x7 security with CCTV and manned patrol",
+      
+    ],
+    details: {
+      price_range: "₹ 3.5 Cr – 8 Cr",
+      possession: "Dec, 2028",
+      rera_id: "UPRERA-LT128-2025",
+    },
+    form: {
+      endpoint: "https://api.web3forms.com/submit",
+      access_key: "your-access-key-here",
+      fields: [
+        { name: "name", type: "text", placeholder: "Your Name", required: true },
+        { name: "email", type: "email", placeholder: "Your Email", required: true },
+        { name: "phone", type: "tel", placeholder: "Your Phone", required: true },
+      ],
+      submit_label: "📖 Request E-Brochure",
+    },
+  },
 
   // Eternia Residences
   {
