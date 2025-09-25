@@ -84,34 +84,35 @@ export default function ExclusiveProjects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent transition-opacity duration-500"></div>
 
                 {/* Project Details */}
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white">
-                  <span className="text-sm font-semibold tracking-wider uppercase bg-yellow-600 text-white py-1 px-3 rounded-full inline-block mb-2 shadow-md">
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8 text-white">
+                  {/* ✅ Responsive Badge */}
+                  <span className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase bg-yellow-600 text-white py-0.5 sm:py-1 px-2 sm:px-3 rounded-full inline-block mb-2 shadow-md whitespace-nowrap">
                     {project.type}
                   </span>
 
-                  <h3 className="text-2xl sm:text-3xl font-bold leading-snug mb-1">
+                  <h3 className="text-lg sm:text-2xl md:text-3xl font-bold leading-snug mb-1">
                     {project.name}
                   </h3>
 
                   {bhkArray.length > 0 && (
-                    <p className="text-sm sm:text-base font-light mb-1">
+                    <p className="text-xs sm:text-sm md:text-base font-light mb-1">
                       {bhkArray.map((b) => b.toUpperCase()).join(" / ")}
                     </p>
                   )}
 
                   {project.starting_price && (
-                    <p className="text-sm sm:text-base font-semibold mb-2 text-yellow-400">
+                    <p className="text-xs sm:text-sm md:text-base font-semibold mb-2 text-yellow-400">
                       Starting from{" "}
-                      <span className="text-lg sm:text-xl font-bold bg-yellow-400 text-gray-900 py-1 px-2 rounded-md shadow-md">
+                      <span className="text-sm sm:text-lg md:text-xl font-bold bg-yellow-400 text-gray-900 py-0.5 px-2 rounded-md shadow-md">
                         {project.starting_price}
                       </span>
                     </p>
                   )}
 
-                  <p className="text-gray-300 capitalize text-sm sm:text-base mb-4 flex items-center">
+                  <p className="text-gray-300 capitalize text-xs sm:text-sm md:text-base mb-4 flex items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 mr-1 text-yellow-500"
+                      className="h-3 w-3 sm:h-4 sm:w-4 mr-1 text-yellow-500"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
@@ -126,12 +127,12 @@ export default function ExclusiveProjects() {
 
                   <Link
                     to={`/project/${project.slug}`}
-                    className="mt-4 inline-flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 text-gray-900 px-6 py-3 rounded-full font-bold transition-all duration-300 text-sm shadow-lg transform hover:-translate-y-1 hover:shadow-xl"
+                    className="mt-2 sm:mt-4 inline-flex items-center justify-center bg-yellow-600 hover:bg-yellow-700 text-gray-900 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-bold transition-all duration-300 text-xs sm:text-sm shadow-lg transform hover:-translate-y-1 hover:shadow-xl"
                   >
                     View Details
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 ml-2"
+                      className="h-3 w-3 sm:h-4 sm:w-4 ml-2"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
