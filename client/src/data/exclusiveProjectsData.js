@@ -3,37 +3,107 @@ const projects = [
     name: "Nirala Gateway",
     slug: "nirala-gateway",
     location: "C-07, Sector 12, Greater Noida West",
-    map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.786842643626!2d77.4747558!3d28.5647563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef83fed3ee85%3A0xdd9959a0e2167730!2sNirala%20Gateway!5e0!3m2!1sen!2sin!4v1692877397000!5m2!1sen!2sin",
+    map_link:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.786842643626!2d77.4747558!3d28.5647563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef83fed3ee85%3A0xdd9959a0e2167730!2sNirala%20Gateway!5e0!3m2!1sen!2sin!4v1692877397000!5m2!1sen!2sin",
     type: "commercial",
     bhk: ["Studio Apartment"],
+    image: "https://www.niralaworld.org/assets/gallery_4-DpyNxCHs.jpg",
+    logo: "https://www.niralaworld.org/assets/logo-D5GJ2r-g.png",
     images: [
-      "https://www.niralaworld.org/assets/inner_slider_04-C9GIrkh5.jpg",
-      "https://www.niralaworld.org/assets/inner_slider_03-DlGfRMLb.jpg",
-      "https://www.niralaworld.org/assets/inner_slider_01-HCdkH4qs.jpg",
-      "https://www.niralaworld.org/assets/gallery_4-DpyNxCHs.jpg"
+      "https://www.niralaworld.org/assets/gallery_7-6iGIGs1M.jpg",
+      "https://www.niralaworld.org/assets/gallery_2-BaAEe6Hq.jpg",
+      "https://www.niralaworld.org/assets/gallery_4-DpyNxCHs.jpg",
     ],
+    floor_plan: "https://www.niralaworld.org/assets/inner_slider_01-HCdkH4qs.jpg",
     about: [
       "Next-generation commercial hub combining retail spaces, fine dining, modern offices, and studio apartments under one ecosystem.",
       "Prime location at Sector-12, Greater Noida West with excellent road connectivity and a three-side open plot.",
       "Landmark development offering high investment potential and visibility for businesses.",
-      "Thoughtfully designed to blend work, leisure, and living with world-class amenities."
+      "Thoughtfully designed to blend work, leisure, and living with world-class amenities.",
+    ],
+    benefits: [
+      "High ROI potential with premium commercial units",
+      "Prime location with excellent road connectivity",
+      "Retail, offices, and studio apartments in one ecosystem",
+      "World-class amenities and smart layouts",
+      "Secure and professionally maintained property",
+      "Fully furnished studio apartments with modern interiors",
+      "Efficient space utilization for urban living",
+      "Ideal for working professionals and small families",
+      "Proximity to major commercial and residential hubs",
     ],
     amenities: [
-      "Retail spaces with high visibility for maximum business exposure",
-      "Fine dining restaurants offering world-class cuisines",
-      "Premium offices (5th to 8th floor) with customizable layouts and modern facilities",
-      "Grand double-height lobby for studio apartments",
-      "450+ stylish studio apartments (9th to 24th floor) with space-optimized interiors",
-      "Smart design layouts with comfort and convenience",
-      "High-speed elevators and 24x7 power backup",
-      "Ample parking space for residents and visitors",
-      "24x7 security with reception services",
-      "Professional maintenance and housekeeping services"
+      {
+        name: "Studio Apartments",
+        type: "residential-commercial hybrid",
+        carpet_area: "612 - 1122 sq.ft. (56.8 - 104.2 sqm)",
+        price_range: "₹ 65 L – 1.4 Cr",
+        features: [
+          "Fully furnished units",
+          "Modular kitchen with branded fittings",
+          "Premium flooring and fixtures",
+          "Smart home automation",
+          "High-speed internet connectivity",
+        ],
+      },
+      {
+        name: "Retail Spaces",
+        description:
+          "High-visibility retail units designed for maximum footfall and business exposure, ideal for shops, showrooms, and boutiques.",
+        features: [
+          "Flexible layouts",
+          "Ground and first-floor units available",
+          "High footfall location",
+          "Ample parking for customers",
+        ],
+      },
+      {
+        name: "Office Spaces",
+        description:
+          "Modern office units with customizable layouts to suit diverse business needs, from startups to established enterprises.",
+        features: [
+          "Open-plan layouts",
+          "High-speed internet and communication infrastructure",
+          "Natural lighting and ventilation",
+          "24x7 access and security",
+        ],
+      },
+      {
+        name: "Food Courts & Restaurants",
+        description:
+          "Diverse dining options offering a variety of cuisines to cater to office employees and visitors.",
+        features: [
+          "Premium interiors for restaurants",
+          "Shared seating areas",
+          "High visibility from main corridors",
+        ],
+      },
+      {
+        name: "Recreational Facilities",
+        description: "Spaces designed for leisure and wellness within the commercial hub.",
+        features: [
+          "Jogging and cycling tracks",
+          "Open-air amphitheater",
+          "Kids' play area for visitors",
+          "Seating areas for relaxation",
+        ],
+      },
+      {
+        name: "Parking & Security",
+        description:
+          "Multi-level parking and advanced security systems ensuring safety for residents, office staff, and visitors.",
+        features: [
+          "Multi-level parking",
+          "CCTV surveillance",
+          "24x7 security personnel",
+          "Power backup for essential areas",
+        ],
+      },
     ],
     details: {
-      price_range: "₹ 65 L – 1.2 Cr",
+      price_range: "₹ 65 L – 1.4 Cr",
       possession: "Apr, 2030",
-      rera_id: "UPRERAPRJ531916"
+      rera_id: "UPRERAPRJ531916",
     },
     form: {
       endpoint: "https://api.web3forms.com/submit",
@@ -41,42 +111,68 @@ const projects = [
       fields: [
         { name: "name", type: "text", placeholder: "Your Name", required: true },
         { name: "email", type: "email", placeholder: "Your Email", required: true },
-        { name: "phone", type: "tel", placeholder: "Your Phone", required: true }
+        { name: "phone", type: "tel", placeholder: "Your Phone", required: true },
       ],
-      submit_label: "📖 Request E-Brochure"
-    }
+      submit_label: "📖 Request E-Brochure",
+    },
   },
 
+  // Godrej Majesty
   {
     name: "Godrej Majesty",
     slug: "godrej-majesty",
     location: "Greater Noida West",
-    map_link: "https://www.google.com/maps/search/?api=1&query=Greater+Noida+West",
+    map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.827299388339!2d77.47623557551468!3d28.56535298925203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5228dabc701%3A0x21b5ca0ce3446638!2sGodrej%20Majesty%2C%20Sector%2012%2C%20Greater%20Noida!5e0!3m2!1sen!2sin!4v1723709591494!5m2!1sen!2sin",
     type: "residential",
     bhk: ["3 BHK", "4 BHK"],
+    image: "https://godrage-magesty.onrender.com/assets/home1-DkjwVjKv.webp",
+    logo: "https://godrage-magesty.onrender.com/assets/logo-1-BoMKoyTY.png",
     images: [
       "https://godrage-magesty.onrender.com/assets/home2-DiiKAUi6.webp",
       "https://godrage-magesty.onrender.com/assets/home1-DkjwVjKv.webp",
       "https://godrage-magesty.onrender.com/assets/1-CQQtvLuA.jpg",
     ],
+    floor_plan: "https://www.godrejmajestysec12.in/assets/3bhk-Dj7EC1g5.png",
     about: [
       "Luxury 3 & 4 BHK apartments with modern amenities and premium community facilities.",
       "Prime location in Greater Noida West with excellent connectivity and living convenience.",
       "Features landscaped gardens, open spaces, and a world-class clubhouse for residents.",
-      "Designed to offer a balanced lifestyle combining comfort, recreation, and security."
+      "Designed to offer a balanced lifestyle combining comfort, recreation, and security.",
+    ],
+    benefits: [
+      "Luxury apartments with modern amenities",
+      "Neoclassical architecture inspired by Lutyens",
+      "77% green open spaces",
+      "27,000 sq. ft. clubhouse across four levels",
+      "Smart homes with advanced automation tech",
+      "From Godrej — 125+ years of trust and legacy",
+      "Easy access on a 24m wide road",
+      "Spacious 3 & 4 BHK apartments with ample natural light",
+      "High-end specifications with modular kitchens, premium flooring & branded fittings",
+      "Dedicated recreational zones: cricket pitch, amphitheater & sports courts",
     ],
     amenities: [
+      {
+        name: "3 BHK Apartment",
+        carpet_area: "1183 - 1644 sq.ft. (109.9 - 152.73 sqm)",
+        price_range: "₹ 2.9 - 4.03 Cr + Charges",
+      },
+      {
+        name: "4 BHK Apartment",
+        carpet_area: "1792 - 1985 sq.ft. (166.48 - 184.41 sqm)",
+        price_range: "₹ 4.19 - 4.64 Cr + Charges",
+      },
       "Swimming pool and fully equipped gym",
       "Clubhouse with indoor games and community spaces",
       "Children's play area for safe recreation",
       "24x7 security with CCTV surveillance",
       "Landscaped gardens and open spaces",
-      "Ample parking for residents and guests"
+      "Ample parking for residents and guests",
     ],
     details: {
       price_range: "₹ 85 L – 1.5 Cr",
       possession: "Dec, 2026",
-      rera_id: "UPRERAPRJ123456"
+      rera_id: "UPRERAPRJ123456",
     },
     form: {
       endpoint: "https://api.web3forms.com/submit",
@@ -84,29 +180,40 @@ const projects = [
       fields: [
         { name: "name", type: "text", placeholder: "Your Name", required: true },
         { name: "email", type: "email", placeholder: "Your Email", required: true },
-        { name: "phone", type: "tel", placeholder: "Your Phone", required: true }
+        { name: "phone", type: "tel", placeholder: "Your Phone", required: true },
       ],
-      submit_label: "📖 Request E-Brochure"
-    }
+      submit_label: "📖 Request E-Brochure",
+    },
   },
 
+  // Fusion The Rivulet
   {
     name: "Fusion The Rivulet",
     slug: "fusion-the-rivulet",
     location: "Greater Noida West",
-    map_link: "https://www.google.com/maps/search/?api=1&query=Greater+Noida+West",
+    map_link:"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3517.715548641197!2d77.480698!3d28.559613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ced2867bd4e8d%3A0xcfd0f2b00ac6185e!2sFusion%20The%20Rivulet!5e0!3m2!1sen!2sin!4v1727270000000!5m2!1sen!2sin",
     type: "residential",
     bhk: ["3 BHK", "4 BHK"],
-    images: [
-      "https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png"
-    ],
+    image: "https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png",
+    logo: "https://www.fusiongroup.org.in/assets/logo_dark-Dx5A2_Dl.webp",
+    images: ["https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png"],
     about: [
       "Premium residences crafted for comfort, elegance, and exclusivity.",
       "Low-density living with world-class features and exceptional design.",
       "Spacious layouts and thoughtfully planned community facilities for modern lifestyles.",
-      "Prime location in Greater Noida West with excellent connectivity."
+      "Prime location in Greater Noida West with excellent connectivity.",
     ],
     amenities: [
+      {
+        name: "3 BHK Apartment",
+        carpet_area: "1200 - 1600 sq.ft.",
+        price_range: "₹ 2.9 - 4.03 Cr + Charges",
+      },
+      {
+        name: "4 BHK Apartment",
+        carpet_area: "1800 - 1980 sq.ft.",
+        price_range: "₹ 4.19 - 4.64 Cr + Charges",
+      },
       "Grand swimming pool & kids' pool",
       "Luxury clubhouse with indoor games",
       "Modern gymnasium & yoga lawn",
@@ -114,17 +221,11 @@ const projects = [
       "Amphitheatre & open-air seating",
       "Children's play area",
       "Senior citizen relaxation zone",
-      "Multi-sport courts: badminton, basketball, cricket pitch",
-      "24x7 security with power backup",
-      "Advanced construction technology for premium living",
-      "12.5 acres of green and open spaces",
-      "Clubhouse, fitness, leisure & community spaces designed to elevate everyday living",
-      "Pre-approved by leading banks for smooth home loans"
     ],
     details: {
       price_range: "₹ 75 L – 1.4 Cr",
       possession: "Mar, 2027",
-      rera_id: "UPRERAPRJ654321"
+      rera_id: "UPRERAPRJ654321",
     },
     form: {
       endpoint: "https://api.web3forms.com/submit",
@@ -132,19 +233,23 @@ const projects = [
       fields: [
         { name: "name", type: "text", placeholder: "Your Name", required: true },
         { name: "email", type: "email", placeholder: "Your Email", required: true },
-        { name: "phone", type: "tel", placeholder: "Your Phone", required: true }
+        { name: "phone", type: "tel", placeholder: "Your Phone", required: true },
       ],
-      submit_label: "📖 Request E-Brochure"
-    }
+      submit_label: "📖 Request E-Brochure",
+    },
   },
 
+  // Eternia Residences
   {
     name: "Eternia Residences",
     slug: "eternia-residences",
     location: "Greater Noida West",
-    map_link: "https://www.google.com/maps/search/?api=1&query=Greater+Noida+West",
+map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.0!2d77.43596!3d28.585998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef25407d8d75:0x7c8b0b102e9204b1!2sEternia+Residences!5e0!3m2!1sen!2sin!4v169xxyyzz"
+,
     type: "residential",
     bhk: ["3 BHK", "4 BHK"],
+    image: "https://www.eternia.co.in/images/elevation-img-2.webp",
+    logo: "https://eterniaresidencesinfo.in/images/eternia_white.png",
     images: ["https://www.eternia.co.in/images/elevation-img-2.webp"],
     about: [
       "Contemporary residences with modern design and lifestyle amenities.",
@@ -174,8 +279,6 @@ const projects = [
       submit_label: "📖 Request E-Brochure",
     },
   },
-
-  // Add more projects here with map_link...
 ];
 
 export default projects;
