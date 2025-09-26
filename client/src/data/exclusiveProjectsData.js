@@ -197,11 +197,27 @@ const projects = [
     image: "https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png",
     logo: "https://www.fusiongroup.org.in/assets/logo_dark-Dx5A2_Dl.webp",
     images: ["https://www.fusiongroup.org.in/assets/inner_01-_xs6y22c.png"],
+      floor_plan: "https://www.godrejmajestysec12.in/assets/3bhk-Dj7EC1g5.png",
     about: [
       "Premium residences crafted for comfort, elegance, and exclusivity.",
       "Low-density living with world-class features and exceptional design.",
       "Spacious layouts and thoughtfully planned community facilities for modern lifestyles.",
       "Prime location in Greater Noida West with excellent connectivity.",
+    ],
+    benefits: [
+      "Premium residential community with high investment potential",
+      "Modern 2, 3, 4, and 5 BHK apartments with luxury specifications",
+      "Spacious green open areas and landscaped gardens",
+      "Advanced security systems and smart home features",
+      "Close proximity to schools, hospitals, and shopping hubs",
+      "State-of-the-art clubhouse with recreational facilities",
+      "Dedicated zones for kids, senior citizens, and fitness enthusiasts",
+      "24x7 power backup and water supply",
+      "Excellent connectivity via Noida-Greater Noida Expressway",
+      "Eco-friendly design with sustainable construction practices",
+      "High-quality construction by a reputed builder ensuring durability",
+      "Luxury lifestyle amenities including swimming pool, gym, and multipurpose courts",
+      "Potential for high rental yield and capital appreciation",
     ],
     amenities: [
       {
@@ -329,6 +345,20 @@ map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.0!2d77.435
       "Strategically located in Greater Noida West for easy connectivity.",
       "Crafted for families seeking comfort and premium living.",
     ],
+      floor_plan: "https://www.godrejmajestysec12.in/assets/3bhk-Dj7EC1g5.png",
+    benefits: [
+      "Spacious 3 & 4 BHK residences with sizes ranging from 1932 to 2625 sq.ft.",
+      "Designed with wellness-centric architecture inspired by the Anthurium flower.",
+      "Each tower offers only 4 units per floor, ensuring privacy and ample natural light.",
+      "Located in Tech Zone IV, Greater Noida West, with excellent connectivity to Noida and Delhi.",
+      "Proximity to educational institutions, hospitals, and shopping centers.",
+      "State-of-the-art clubhouse with recreational facilities.",
+      "Dedicated spaces for children, senior citizens, and fitness enthusiasts.",
+      "24x7 security and surveillance systems for enhanced safety.",
+      "Eco-friendly design with sustainable construction practices.",
+      "High potential for capital appreciation due to strategic location and development."
+    ],
+    
     amenities: [
       "Swimming pool & clubhouse",
       "Children’s play zone",
@@ -351,6 +381,65 @@ map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3496.0!2d77.435
       ],
       submit_label: "📖 Request E-Brochure",
     },
+    
+  },
+  {
+    name: "M3M The Cullinan",
+    slug: "m3m-the-cullinan",
+    location: "Sector 94, Noida",
+    map_link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3490.12345!2d77.450123!3d28.567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cefb123456789:0xabcdef1234567890!2sM3M+The+Cullinan!5e0!3m2!1sen!2sin!4v169XXXXXX",
+    type: "residential",
+    bhk: ["2 BHK", "3 BHK", "4 BHK", "5 BHK"],
+    image: "https://m3mhome.in/M3M-Cullinan/images/b.jpg",
+    logo: "https://m3mhome.in/M3M-Cullinan/images/logoo.png",
+    images: [
+      "https://m3mhome.in/M3M-Cullinan/images/b.jpg",
+    ],
+    floor_plan: "https://m3mhome.in/M3M-Cullinan/images/fp/3bhk-2050.webp",
+    about: [
+      "Luxurious residences with contemporary design and world-class amenities.",
+      "Strategically located in Sector 94, Noida with excellent connectivity to Delhi NCR.",
+      "Crafted for families and individuals seeking premium lifestyle and comfort."
+    ],
+    benefits: [
+      "Premium residential community with high investment potential",
+      "Modern 2, 3, 4, and 5 BHK apartments with luxury specifications",
+      "Spacious green open areas and landscaped gardens",
+      "Advanced security systems and smart home features",
+      "Close proximity to schools, hospitals, and shopping hubs",
+      "State-of-the-art clubhouse with recreational facilities",
+      "Dedicated zones for kids, senior citizens, and fitness enthusiasts",
+      "24x7 power backup and water supply",
+      "Excellent connectivity via Noida-Greater Noida Expressway",
+      "Eco-friendly design with sustainable construction practices",
+      "High-quality construction by a reputed builder ensuring durability",
+      "Luxury lifestyle amenities including swimming pool, gym, and multipurpose courts",
+      "Potential for high rental yield and capital appreciation",
+    ],
+    amenities: [
+      "Swimming pool & clubhouse",
+      "Children’s play area",
+      "Landscaped gardens & jogging tracks",
+      "Ample car parking",
+      "24x7 security & intercom",
+      "Gym & fitness center",
+      "Community hall & multipurpose courts"
+    ],
+    details: {
+      price_range: "₹ 1.2 Cr – 4.5 Cr",
+      possession: "Dec, 2027",
+      rera_id: "UPRERA123456789"
+    },
+    form: {
+      endpoint: "https://api.web3forms.com/submit",
+      access_key: "d5f504e4-3e5a-4dda-8255-62123d25fe81",
+      fields: [
+        { name: "name", type: "text", placeholder: "Your Name", required: true },
+        { name: "email", type: "email", placeholder: "Your Email", required: true },
+        { name: "phone", type: "tel", placeholder: "Your Phone", required: true }
+      ],
+      submit_label: "📖 Request E-Brochure"
+    }
   },
 ];
 

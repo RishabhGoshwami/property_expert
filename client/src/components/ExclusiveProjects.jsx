@@ -49,6 +49,15 @@ const exclusiveProjects = [
       "https://images.openai.com/thumbnails/url/AhxQ1Xicu1mUUVJSUGylr5-al1xUWVCSmqJbkpRnoJdeXJJYkpmsl5yfq5-Zm5ieWmxfaAuUsXL0S7F0Tw5y8jDxz3YuMw0PdcvNLzAMd9E1DS7T9cvzSjK1yHLyC3MuTqoyrSwrD0s3CaxKCsgySzbJLi9w8TZQKwYAqhEosQ",
     starting_price: "₹6.5 Cr",
   },
+  {
+    name: "M3M The Cullinan",
+    slug: "m3m-the-cullinan",
+    bhk: ["2bhk", "3bhk", "4bhk", "5bhk"],
+    location: "sector-94, noida",
+    type: "residential",
+    image: "https://m3mhome.in/M3M-Cullinan/images/b.jpg",
+    starting_price: "₹1.2 Cr",
+  },
 ];
 
 export default function ExclusiveProjects() {
