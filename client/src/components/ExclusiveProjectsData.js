@@ -54,6 +54,7 @@ const ExclusiveProjectsData = [
     image: "https://m3mhome.in/M3M-Cullinan/images/b.jpg",
     starting_price: "₹1.2 Cr",
   },
+  
 ];
 
 export default ExclusiveProjectsData;
