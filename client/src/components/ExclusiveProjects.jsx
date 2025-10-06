@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const exclusiveProjects = [
@@ -8,8 +8,7 @@ const exclusiveProjects = [
     bhk: ["3bhk", "4bhk"],
     location: "greater-noida-west",
     type: "residential",
-    image:
-      "https://godrejmajestynoidaextension.org/images/godrej-majesty-photos3.jpg",
+    image: "https://godrejmajestynoidaextension.org/images/godrej-majesty-photos3.jpg",
     starting_price: "₹2.9 Cr",
   },
   {
@@ -61,6 +60,10 @@ const exclusiveProjects = [
 ];
 
 export default function ExclusiveProjects() {
+  const [showAll, setShowAll] = useState(false);
+
+  const displayedProjects = showAll ? exclusiveProjects : exclusiveProjects.slice(0, 3);
+
   return (
     <section className="py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,15 +73,23 @@ export default function ExclusiveProjects() {
             Our <span className="text-yellow-600">Exclusive</span> Projects ✨
           </h2>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
-            Explore our curated selection of top-tier residential and commercial
-            properties, handpicked to offer exceptional value and a premium
-            lifestyle.
+            Explore our curated selection of top-tier residential and commercial properties.
           </p>
+
+          {/* View All Button */}
+          <div className="mt-6 flex justify-center">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-bold transition-all duration-300"
+            >
+              {showAll ? "Show Less" : "View All"}
+            </button>
+          </div>
         </div>
 
         {/* Projects Grid */}
         <div className="grid gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
-          {exclusiveProjects.map((project, i) => {
+          {displayedProjects.map((project, i) => {
             const bhkArray = Array.isArray(project.bhk)
               ? project.bhk
               : project.bhk

@@ -33,7 +33,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <FaEnvelope className={`${PRIMARY_ACCENT} text-lg`} />
-                <a href="mailto:info@propertyexpert.com" className={`${TEXT_COLOR} ${HOVER_ACCENT} transition-colors font-medium`}>info@propertyexpert.com</a>
+                <a href="mailto:info@propertyexpert.com" className={`${TEXT_COLOR} ${HOVER_ACCENT} transition-colors font-medium`}>vikas@propertyexpertrealtors.com</a>
               </div>
             </div>
           </div>

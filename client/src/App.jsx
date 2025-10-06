@@ -1,10 +1,9 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 import Navbar from "./components/Navbar";
-import FloatingButtons from "./components/FloatingButtons"; 
-import PopupForm from "./components/PopupForm";           
-
+import FloatingButtons from "./components/FloatingButtons";
+import PopupForm from "./components/PopupForm";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -12,15 +11,27 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Gallery from "./pages/Gallery";
 import Career from "./pages/Career";
 import Blog from "./pages/Blog";
-import Contact from './pages/Contact';
+import Contact from "./pages/Contact";
 import ThankYou from "./components/ThankYou";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TermsAndConditions";
 import Training from "./components/Training";
 import Footer from "./components/Footer";
+import ExclusiveProjects from "./components/ExclusiveProjects"; // ✅ keep this to show project list
 
 function App() {
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  // ✅ Only one fixed exclusive project list
+  const exclusiveProjects = [
+    {
+      name: "GODREJ MAJESTY",
+      slug: "godrej-majesty",
+      location: "greater-noida-west",
+      type: "residential",
+      image: "https://godrejmajestynoidaextension.org/images/godrej-majesty.jpg",
+    },
+  ];
 
   return (
     <Router>
@@ -28,6 +39,7 @@ function App() {
 
       <div className="mt-16">
         <Routes>
+          {/* ✅ Main website routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
@@ -35,27 +47,27 @@ function App() {
           <Route path="/projects/all" element={<Projects />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsAndConditions />} />
-
           <Route path="/project/:slug" element={<ProjectDetails />} />
           <Route path="/training" element={<Training />} />
-
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/career" element={<Career />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
-
-          {/* ✅ Thank You page route */}
           <Route path="/thank-you" element={<ThankYou />} />
+
+          {/* ✅ Exclusive projects list page */}
+          <Route
+            path="/exclusive-projects"
+            element={<ExclusiveProjects projects={exclusiveProjects} />}
+          />
         </Routes>
       </div>
-      
-      {/* ✅ Floating Button */}
-      <FloatingButtons onEnquiryClick={() => setIsFormOpen(true)} />
 
-      {/* ✅ Popup Form */}
+      {/* ✅ Floating Enquiry Button + Popup Form */}
+      <FloatingButtons onEnquiryClick={() => setIsFormOpen(true)} />
       {isFormOpen && <PopupForm onClose={() => setIsFormOpen(false)} />}
 
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
